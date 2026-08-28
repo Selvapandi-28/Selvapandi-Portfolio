@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selvapandi P. | Java Full Stack & AI Portfolio</title>
+  <meta name="description" content="Portfolio of Selvapandi P. - Final-year B.Tech in Artificial Intelligence & Data Science, Full-Stack Java & AI Developer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-18px) rotate(180deg); }
+    }
+    @keyframes float-reverse {
+      0%, 100% { transform: translateY(0px) rotate(360deg); }
+      50% { transform: translateY(22px) rotate(180deg); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.25; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(1.08); }
+    }
+    .animate-float1 { animation: float-slow 16s ease-in-out infinite; }
+    .animate-float2 { animation: float-reverse 20s ease-in-out infinite; }
+    .animate-pulse-glow { animation: pulse-glow 8s ease-in-out infinite; }
+    .custom-cursor {
+      pointer-events: none;
+      transition: transform 0.08s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-[#07090e] text-slate-100 font-sans selection:bg-cyan-500/30 selection:text-cyan-200 antialiased overflow-x-hidden min-h-screen">
+
+  <!-- Top Progress Bar -->
+  <div id="scrollProgress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-cyan-400 via-violet-500 to-pink-500 z-50 transition-all duration-75" style="width: 0%;"></div>
+
+  <!-- Custom Glowing Cursor (Desktop) -->
+  <div id="cursorFollower" class="custom-cursor fixed z-40 hidden md:block -left-12 -top-12">
+    <div class="h-24 w-24 rounded-full bg-cyan-500/10 blur-xl"></div>
+    <div class="absolute left-10 top-10 h-3 w-3 rounded-full bg-cyan-400 shadow-[0_0_12px_#00f0ff]"></div>
+  </div>
+
+  <!-- Background Ambient Glow & Mesh -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1f293715_1px,transparent_1px),linear-gradient(to_bottom,#1f293715_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+    <div class="absolute top-1/4 left-1/6 h-96 w-96 rounded-full bg-cyan-600/10 blur-[130px] animate-pulse-glow"></div>
+    <div class="absolute top-2/3 right-1/4 h-[420px] w-[420px] rounded-full bg-violet-600/10 blur-[150px] animate-pulse-glow"></div>
+    <div class="absolute bottom-10 left-1/3 h-80 w-80 rounded-full bg-pink-600/10 blur-[120px]"></div>
+
+    <!-- Floating 3D Geometric Badges -->
+    <div class="absolute top-36 right-[10%] hidden lg:flex h-24 w-24 items-center justify-center rounded-2xl border border-cyan-500/25 bg-cyan-950/20 backdrop-blur-md shadow-[0_0_30px_rgba(6,182,212,0.2)] animate-float1">
+      <span class="font-mono text-xs text-cyan-400 font-bold">&lt;/&gt; Java</span>
+    </div>
+    <div class="absolute top-1/2 left-[6%] hidden lg:flex h-28 w-28 items-center justify-center rounded-full border border-violet-500/25 bg-violet-950/20 backdrop-blur-md shadow-[0_0_30px_rgba(168,85,247,0.2)] animate-float2">
+      <span class="font-mono text-xs text-violet-300 font-bold">AI Agent</span>
+    </div>
+  </div>
+
+  <!-- Sticky Navbar -->
+  <header class="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-[#07090e]/85 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-violet-600 p-[1px] shadow-[0_0_15px_rgba(0,240,255,0.4)]">
+          <div class="flex h-full w-full items-center justify-center rounded-xl bg-[#0b0f17]">
+            <span class="font-mono text-lg font-black text-cyan-400">SP</span>
+          </div>
+        </div>
+        <div>
+          <div class="text-base font-bold text-white group-hover:text-cyan-400 transition-colors">Selvapandi P.</div>
+          <div class="text-xs font-mono text-slate-400 flex items-center gap-1.5">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>B.Tech AI & DS (2027)</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="hidden md:flex items-center gap-1 rounded-full border border-slate-800 bg-slate-900/70 p-1.5 backdrop-blur-lg">
+        <a href="#hero" class="rounded-full px-4 py-1.5 text-xs font-medium text-cyan-300 bg-cyan-500/15 border border-cyan-500/30">Home</a>
+        <a href="#about" class="rounded-full px-4 py-1.5 text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors">About</a>
+        <a href="#skills" class="rounded-full px-4 py-1.5 text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors">Skills</a>
+        <a href="#experience" class="rounded-full px-4 py-1.5 text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors">Timeline</a>
+        <a href="#projects" class="rounded-full px-4 py-1.5 text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors">Projects</a>
+        <a href="#competitions" class="rounded-full px-4 py-1.5 text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors">Hackathons</a>
+        <a href="#contact" class="rounded-full px-4 py-1.5 text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors">Contact</a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-3">
+        <button onclick="navigator.clipboard.writeText('selvapandi.dev@gmail.com'); alert('Email copied: selvapandi.dev@gmail.com');" class="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800/70 px-3.5 py-2 text-xs font-medium text-slate-300 hover:border-cyan-500/50 hover:text-white transition-all shadow-sm">
+          <span>Copy Email</span>
+        </button>
+        <a href="#contact" class="flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_25px_rgba(0,240,255,0.5)] transition-all">
+          <span>Let's Talk</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Container -->
+  <main class="relative z-10 mx-auto max-w-7xl px-6">
+    
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-[85vh] flex flex-col justify-center pt-10 pb-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-950/30 px-4 py-1.5 text-xs font-mono font-medium text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.15)] mb-6 backdrop-blur-md">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+            </span>
+            <span>B.Tech AI & Data Science (Graduating 2027)</span>
+            <span class="text-slate-600">|</span>
+            <span class="text-emerald-400 font-semibold">79% Academic Record</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-4">
+            Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-blue-500">Selvapandi P.</span>
+          </h1>
+
+          <!-- Typewriter Output -->
+          <div class="h-16 flex items-center mb-6">
+            <h2 class="text-xl sm:text-3xl font-semibold text-slate-300 font-mono">
+              <span class="text-cyan-400 mr-2">&gt;</span>
+              <span id="typewriterText" class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-violet-300 to-pink-300"></span>
+              <span class="inline-block h-6 sm:h-7 w-1 bg-cyan-400 animate-pulse"></span>
+            </h2>
+          </div>
+
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mb-8">
+            Final-year B.Tech student in <strong class="text-cyan-300 font-semibold">Artificial Intelligence & Data Science</strong> at <strong class="text-white">V.S.B College of Engineering Technical Campus</strong>. I blend robust full-stack engineering (<span class="text-violet-300 font-semibold">MERN Stack, Java</span>) with AI integrations, cloud workflows, and creative storytelling through video editing.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="#projects" class="flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 px-7 py-3.5 text-sm font-bold text-white shadow-[0_0_30px_rgba(0,240,255,0.35)] hover:scale-105 transition-all">
+              <span>Explore Featured Work</span> →
+            </a>
+            <a href="#contact" class="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/80 px-6 py-3.5 text-sm font-semibold text-slate-200 hover:border-cyan-400 hover:text-white transition-all">
+              <span>Get In Touch</span>
+            </a>
+          </div>
+
+          <div class="mt-10 flex flex-wrap items-center gap-2 pt-6 border-t border-slate-800 text-xs text-slate-400">
+            <span class="font-mono text-slate-500 uppercase tracking-wider">Core Stacks:</span>
+            <span class="rounded bg-slate-900 border border-slate-800 px-2.5 py-1 text-slate-300 font-mono">Java</span>
+            <span class="rounded bg-slate-900 border border-slate-800 px-2.5 py-1 text-slate-300 font-mono">React.js</span>
+            <span class="rounded bg-slate-900 border border-slate-800 px-2.5 py-1 text-slate-300 font-mono">Node.js</span>
+            <span class="rounded bg-slate-900 border border-slate-800 px-2.5 py-1 text-slate-300 font-mono">Python</span>
+            <span class="rounded bg-slate-900 border border-slate-800 px-2.5 py-1 text-slate-300 font-mono">AI Agents</span>
+            <span class="rounded bg-slate-900 border border-slate-800 px-2.5 py-1 text-slate-300 font-mono">SQL</span>
+            <span class="rounded bg-slate-900 border border-slate-800 px-2.5 py-1 text-slate-300 font-mono">AWS Cloud</span>
+          </div>
+        </div>
+
+        <!-- Right Terminal Console -->
+        <div class="lg:col-span-5">
+          <div class="relative rounded-2xl border border-slate-800 bg-[#0c111d]/90 backdrop-blur-2xl p-6 shadow-2xl">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+              <div class="flex items-center gap-2">
+                <span class="h-3 w-3 rounded-full bg-red-500/80"></span>
+                <span class="h-3 w-3 rounded-full bg-yellow-500/80"></span>
+                <span class="h-3 w-3 rounded-full bg-emerald-500/80"></span>
+                <span class="ml-2 font-mono text-xs text-slate-400">selvapandi@quantum: ~</span>
+              </div>
+              <span class="rounded bg-cyan-950/60 border border-cyan-500/30 px-2 py-0.5 font-mono text-[10px] text-cyan-400">ACTIVE</span>
+            </div>
+
+            <div class="space-y-3 font-mono text-xs">
+              <div class="text-slate-400"><span class="text-cyan-400">$</span> identity --summary</div>
+              <div class="rounded-xl bg-slate-950/80 p-3.5 border border-slate-800/80 space-y-1.5 text-slate-300">
+                <div class="flex justify-between"><span class="text-slate-500">Name:</span> <span class="text-white font-bold">Selvapandi P.</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Degree:</span> <span class="text-cyan-300">B.Tech AI & Data Science (2027)</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Campus:</span> <span class="text-slate-300">V.S.B Engineering Tech</span></div>
+                <div class="flex justify-between"><span class="text-slate-500">Academics:</span> <span class="text-emerald-400 font-bold">79% Record</span></div>
+              </div>
+
+              <div class="text-slate-400"><span class="text-cyan-400">$</span> fetch --internships</div>
+              <div class="grid grid-cols-2 gap-2 text-[11px]">
+                <div class="rounded-lg bg-slate-900 border border-slate-800 p-2.5">
+                  <div class="text-amber-400 font-bold">Amazon-ASSPL (2025)</div>
+                  <div class="text-[10px] text-emerald-400">✓ Onboarding Done</div>
+                </div>
+                <div class="rounded-lg bg-slate-900 border border-slate-800 p-2.5">
+                  <div class="text-cyan-400 font-bold">APPIN Tech (2025)</div>
+                  <div class="text-[10px] text-slate-400">Data Analytics Intern</div>
+                </div>
+              </div>
+
+              <div class="text-slate-400"><span class="text-cyan-400">$</span> leadership --status</div>
+              <div class="rounded-lg bg-violet-950/40 border border-violet-500/30 p-2.5 flex items-center justify-between">
+                <div>
+                  <div class="text-xs font-bold text-white">Lead: Team "Error Hunters"</div>
+                  <div class="text-[10px] text-violet-300">ABB Accelerator Challenge 2026</div>
+                </div>
+                <span class="text-xs text-yellow-400 font-bold">Leader</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills Grid Section -->
+    <section id="skills" class="py-20 border-t border-slate-800/80">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+        <div>
+          <div class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-950/30 px-3.5 py-1 text-xs font-mono text-cyan-300 mb-2">
+            <span>Core & Modern Capabilities</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white">Technical Skills Grid</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Core -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] transition-all">
+          <div class="text-xs font-mono text-cyan-400 font-bold mb-2">CORE LANGUAGES</div>
+          <h3 class="text-lg font-bold text-white mb-2">Java & Scripting</h3>
+          <p class="text-xs text-slate-400 mb-4">Java (OOP, JVM, Multithreading), JavaScript (ES6+), Python, SQL, HTML5, CSS3.</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-cyan-300">Java</span>
+            <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-cyan-300">JS</span>
+            <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-cyan-300">Python</span>
+            <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-cyan-300">SQL</span>
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] transition-all">
+          <div class="text-xs font-mono text-cyan-400 font-bold mb-2">FRONTEND & UI</div>
+          <h3 class="text-lg font-bold text-white mb-2">React & Interfaces</h3>
+          <p class="text-xs text-slate-400 mb-4">React.js, Tailwind CSS, Framer Motion, Microsoft Power Platform.</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-cyan-300">React.js</span>
+            <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-cyan-300">Tailwind</span>
+            <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-cyan-300">Power Apps</span>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 hover:border-violet-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition-all">
+          <div class="text-xs font-mono text-violet-400 font-bold mb-2">BACKEND & DATABASE</div>
+          <h3 class="text-lg font-bold text-white mb-2">Node.js & Relational SQL</h3>
+          <p class="text-xs text-slate-400 mb-4">Node.js, Express.js, RESTful APIs, Relational SQL, PostgreSQL, MySQL.</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-violet-300">Node.js</span>
+            <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-violet-300">REST APIs</span>
+            <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-violet-300">PostgreSQL</span>
+          </div>
+        </div>
+
+        <!-- AI & Cloud -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all">
+          <div class="text-xs font-mono text-emerald-400 font-bold mb-2">AI & CLOUD</div>
+          <h3 class="text-lg font-bold text-white mb-2">Agents & Cloud</h3>
+          <p class="text-xs text-slate-400 mb-4">AI Agents, Workflow Automations, Cloud Computing (Corizo Certified), Video Editing.</p>
+          <div class="flex flex-wrap gap-1">
+            <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-emerald-300">AI Agents</span>
+            <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-emerald-300">Cloud Arch</span>
+            <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-emerald-300">Video Edit</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section id="experience" class="py-20 border-t border-slate-800/80">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-950/30 px-3.5 py-1 text-xs font-mono text-blue-300 mb-2">
+          <span>Industrial Track Record</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">Experience & Internships</h2>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-6">
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 hover:border-cyan-500/40 transition-all">
+          <div class="flex items-center justify-between mb-2">
+            <span class="rounded bg-cyan-950 px-2.5 py-0.5 text-xs font-mono text-cyan-300">2025</span>
+            <span class="text-xs font-mono text-emerald-400">✓ Onboarded</span>
+          </div>
+          <h3 class="text-xl font-bold text-white">Amazon-ASSPL</h3>
+          <div class="text-sm font-semibold text-cyan-400 mb-2">Deputed Position</div>
+          <p class="text-sm text-slate-300">Completed full operational onboarding and technical integration protocols according to enterprise scale standards.</p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 hover:border-cyan-500/40 transition-all">
+          <div class="flex items-center justify-between mb-2">
+            <span class="rounded bg-cyan-950 px-2.5 py-0.5 text-xs font-mono text-cyan-300">Apr – Jun 2025</span>
+            <span class="text-xs font-mono text-slate-400">Coimbatore</span>
+          </div>
+          <h3 class="text-xl font-bold text-white">APPIN Technology</h3>
+          <div class="text-sm font-semibold text-cyan-400 mb-2">Data Analytics Intern</div>
+          <p class="text-sm text-slate-300">Engineered Python and SQL scripts to process large datasets and structure business intelligence pipelines.</p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 hover:border-cyan-500/40 transition-all">
+          <div class="flex items-center justify-between mb-2">
+            <span class="rounded bg-cyan-950 px-2.5 py-0.5 text-xs font-mono text-cyan-300">Apr – Jun 2024</span>
+            <span class="text-xs font-mono text-slate-400">Coimbatore</span>
+          </div>
+          <h3 class="text-xl font-bold text-white">Gateway Software Solutions</h3>
+          <div class="text-sm font-semibold text-cyan-400 mb-2">Full Stack Web Development Intern</div>
+          <p class="text-sm text-slate-300">Engineered server-side architecture and REST APIs using Node.js and React.js within Agile sprints.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="py-20 border-t border-slate-800/80">
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-950/30 px-3.5 py-1 text-xs font-mono text-cyan-300 mb-2">
+          <span>Engineered Builds</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">Featured Projects</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Project 1 -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-8 hover:border-cyan-500/40 hover:shadow-[0_0_30px_rgba(0,240,255,0.15)] transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-cyan-400 font-bold uppercase">Featured Full-Stack</span>
+              <span class="text-xs font-mono text-emerald-400">● Live on Vercel</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-1">AI Expense Dashboard</h3>
+            <div class="text-xs font-mono text-cyan-300 mb-4">Intelligent Receipt Parsing & Telemetry</div>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              A scalable full-stack web application (React, Node.js, REST APIs) designed to categorize unstructured receipt data with automated financial classification.
+            </p>
+            <div class="space-y-2 mb-6 rounded-xl bg-slate-950/70 p-4 border border-slate-800 text-xs text-slate-300">
+              <div>✓ Vision & OCR Parsing from raw receipt captures</div>
+              <div>✓ Interactive financial charts & spend telemetry</div>
+              <div>✓ Secure encrypted RESTful API routing</div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+            <div class="flex gap-1.5">
+              <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-slate-300">React</span>
+              <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-slate-300">Node.js</span>
+              <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-slate-300">PostgreSQL</span>
+            </div>
+            <a href="https://ai-expense-dashboard-demo.vercel.app" target="_blank" class="rounded-lg bg-cyan-500 px-3.5 py-1.5 text-xs font-bold text-slate-950 hover:bg-cyan-400 transition-colors">
+              Launch Demo ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-8 hover:border-violet-500/40 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-violet-400 font-bold uppercase">Chrome Extension</span>
+              <span class="text-xs font-mono text-cyan-400">● Real-Time DOM AI</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-1">Terms of Service Red-Flag Finder</h3>
+            <div class="text-xs font-mono text-violet-300 mb-4">Privacy & Clause Scanning Extension</div>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              A Chrome extension utilizing JavaScript and DOM manipulation to scan web pages and highlight risky clauses and legal liabilities in real-time.
+            </p>
+            <div class="space-y-2 mb-6 rounded-xl bg-slate-950/70 p-4 border border-slate-800 text-xs text-slate-300">
+              <div>✓ Instantaneous DOM traversal detecting risky arbitration</div>
+              <div>✓ Plain-English breakdown of complex legal jargon</div>
+              <div>✓ Client-side evaluation preserving total user privacy</div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+            <div class="flex gap-1.5">
+              <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-slate-300">JavaScript</span>
+              <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-slate-300">Chrome API</span>
+              <span class="rounded bg-slate-950 px-2 py-0.5 text-[10px] font-mono text-slate-300">DOM AI</span>
+            </div>
+            <a href="https://github.com/Selvapandi-28" target="_blank" class="rounded-lg bg-violet-500 px-3.5 py-1.5 text-xs font-bold text-white hover:bg-violet-400 transition-colors">
+              View Code ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hackathons & Certifications Section -->
+    <section id="competitions" class="py-20 border-t border-slate-800/80">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-950/30 px-3.5 py-1 text-xs font-mono text-yellow-300 mb-2">
+          <span>National Arenas & Leadership</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">Hackathons & Accreditations</h2>
+      </div>
+
+      <!-- Leadership Highlight -->
+      <div class="rounded-2xl border border-yellow-500/40 bg-slate-900/60 p-8 mb-8 shadow-[0_0_30px_rgba(234,179,8,0.15)]">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div>
+            <div class="inline-block rounded bg-yellow-950 border border-yellow-500/40 px-2.5 py-0.5 text-xs font-mono font-bold text-yellow-300 mb-2">
+              TEAM LEADERSHIP
+            </div>
+            <h3 class="text-2xl font-bold text-white">Led Team "Error hunters"</h3>
+            <p class="text-sm font-semibold text-yellow-400 mb-2">ABB Accelerator Challenge 2026</p>
+            <p class="text-sm text-slate-300 max-w-2xl">Spearheaded solution architecture, team sprint coordination, and technical prototyping under intense hackathon deadlines.</p>
+          </div>
+          <div class="rounded-xl bg-yellow-500/10 border border-yellow-500/30 px-4 py-2 text-xs font-mono text-yellow-300 font-bold">
+            ABB Accelerator 2026
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid of Competitions -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+        <div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+          <div class="text-xs font-mono text-slate-400">2026</div>
+          <h4 class="font-bold text-white">Google India's The Big Code 2026</h4>
+          <div class="text-xs text-cyan-400">Google India Algorithmic Contest</div>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+          <div class="text-xs font-mono text-slate-400">Season 13</div>
+          <h4 class="font-bold text-white">TCS CodeVita</h4>
+          <div class="text-xs text-cyan-400">Global Algorithmic Arena</div>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+          <div class="text-xs font-mono text-slate-400">2026</div>
+          <h4 class="font-bold text-white">Amazon HackOn 6.0</h4>
+          <div class="text-xs text-cyan-400">Enterprise Cloud Hackathon</div>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+          <div class="text-xs font-mono text-slate-400">2026</div>
+          <h4 class="font-bold text-white">Tata Technologies InnoVent-27</h4>
+          <div class="text-xs text-cyan-400">Engineering Innovation</div>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+          <div class="text-xs font-mono text-slate-400">2026</div>
+          <h4 class="font-bold text-white">Solution Challenge 2026</h4>
+          <div class="text-xs text-cyan-400">GDSC Sustainable AI</div>
+        </div>
+        <div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+          <div class="text-xs font-mono text-slate-400">2026</div>
+          <h4 class="font-bold text-white">TenzorX 2026</h4>
+          <div class="text-xs text-cyan-400">Machine Learning Sprint</div>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="rounded-xl border border-orange-500/30 bg-slate-900/50 p-4">
+          <span class="rounded bg-orange-950/80 px-2 py-0.5 text-[10px] font-mono text-orange-400 font-bold">Mastery</span>
+          <h4 class="text-sm font-bold text-white mt-2">Masters in Full Stack Java</h4>
+          <div class="text-xs text-slate-400">CareerLadder</div>
+        </div>
+        <div class="rounded-xl border border-purple-500/30 bg-slate-900/50 p-4">
+          <span class="rounded bg-purple-950/80 px-2 py-0.5 text-[10px] font-mono text-purple-400 font-bold">Premier</span>
+          <h4 class="text-sm font-bold text-white mt-2">Applied AI & ML Essentials</h4>
+          <div class="text-xs text-slate-400">IIT Patna</div>
+        </div>
+        <div class="rounded-xl border border-cyan-500/30 bg-slate-900/50 p-4">
+          <span class="rounded bg-cyan-950/80 px-2 py-0.5 text-[10px] font-mono text-cyan-400 font-bold">NASSCOM</span>
+          <h4 class="text-sm font-bold text-white mt-2">"What is AI?" Masterclass</h4>
+          <div class="text-xs text-slate-400">FutureSkills Prime</div>
+        </div>
+        <div class="rounded-xl border border-emerald-500/30 bg-slate-900/50 p-4">
+          <span class="rounded bg-emerald-950/80 px-2 py-0.5 text-[10px] font-mono text-emerald-400 font-bold">Certified</span>
+          <h4 class="text-sm font-bold text-white mt-2">Cloud Computing</h4>
+          <div class="text-xs text-slate-400">Corizo Certified</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Hub Section -->
+    <section id="contact" class="py-20 border-t border-slate-800/80 mb-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-5">
+          <div class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-950/30 px-3.5 py-1 text-xs font-mono text-cyan-300 mb-3">
+            <span>Get Connected</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Let's Connect for 2026/27 Roles</h2>
+          <p class="text-sm text-slate-300 leading-relaxed mb-6">
+            Available for Java Full Stack, AI & Automation, and Cloud Engineering opportunities.
+          </p>
+
+          <div class="space-y-3 font-mono text-xs">
+            <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
+              <span class="text-slate-500">Email:</span>
+              <div class="text-sm font-bold text-cyan-300">selvapandi.dev@gmail.com</div>
+            </div>
+            <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
+              <span class="text-slate-500">LinkedIn:</span>
+              <div class="text-sm font-bold text-white">linkedin.com/in/selvapandi-p</div>
+            </div>
+            <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
+              <span class="text-slate-500">Location:</span>
+              <div class="text-sm font-bold text-white">Tamil Nadu, India (Open to Remote / Relocation)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-8">
+            <h3 class="text-xl font-bold text-white mb-4">Send a Direct Message</h3>
+            <form onsubmit="event.preventDefault(); alert('Message sent successfully! Selvapandi will reply shortly.');" class="space-y-4 font-mono text-xs">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-slate-400 mb-1">Your Name</label>
+                  <input type="text" required placeholder="Satya Nadella" class="w-full rounded-xl border border-slate-800 bg-slate-950 p-3 text-white focus:border-cyan-400 focus:outline-none">
+                </div>
+                <div>
+                  <label class="block text-slate-400 mb-1">Your Email</label>
+                  <input type="email" required placeholder="satya@microsoft.com" class="w-full rounded-xl border border-slate-800 bg-slate-950 p-3 text-white focus:border-cyan-400 focus:outline-none">
+                </div>
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1">Message</label>
+                <textarea rows="4" required placeholder="Hi Selvapandi, we would like to interview you for our Full Stack AI team..." class="w-full rounded-xl border border-slate-800 bg-slate-950 p-3 text-white focus:border-cyan-400 focus:outline-none resize-none"></textarea>
+              </div>
+              <button type="submit" class="w-full rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 py-3.5 text-sm font-bold text-white shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(0,240,255,0.5)] transition-all">
+                Transmit Message →
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-slate-900 bg-[#05070a] py-8 text-center text-slate-500 text-xs font-mono">
+    <p>Selvapandi P. • B.Tech AI & DS 2027 • Built with React, Tailwind CSS, Framer Motion & Lucide</p>
+  </footer>
+
+  <!-- Dynamic Typewriter & Scroll Scripts -->
+  <script>
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
+    });
+
+    // Custom Cursor tracking
+    const cursor = document.getElementById('cursorFollower');
+    window.addEventListener('mousemove', (e) => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+
+    // Typewriter effect
+    const phrases = [
+      "Java Full Stack Developer",
+      "AI & Workflow Automation Architect",
+      "Freelance Video Editor",
+      "Cloud Engineer Aspirant"
+    ];
+    let phraseIdx = 0;
+    let letterIdx = 0;
+    let isDeleting = false;
+    const typewriterEl = document.getElementById('typewriterText');
+
+    function typeLoop() {
+      const currentPhrase = phrases[phraseIdx % phrases.length];
+      if (isDeleting) {
+        typewriterEl.textContent = currentPhrase.substring(0, letterIdx - 1);
+        letterIdx--;
+      } else {
+        typewriterEl.textContent = currentPhrase.substring(0, letterIdx + 1);
+        letterIdx++;
+      }
+
+      let speed = isDeleting ? 40 : 80;
+
+      if (!isDeleting && letterIdx === currentPhrase.length) {
+        speed = 1800; // Pause at end
+        isDeleting = true;
+      } else if (isDeleting && letterIdx === 0) {
+        isDeleting = false;
+        phraseIdx++;
+        speed = 400; // Pause before next
+      }
+
+      setTimeout(typeLoop, speed);
+    }
+    typeLoop();
+  </script>
+</body>
+</html>
